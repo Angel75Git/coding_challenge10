@@ -16,6 +16,9 @@ class Product {
     updateStock(quantity){
         return this.stock = this.stock - quantity//changing the stock by quantity
     }
+    restockingStock(quantity) {
+        return this.stock = this.stock + quantity //I had to create this new method to finish task 5
+    } //new method to increase stock
 }
 //Laptop Product
 const prod1 = new Product("Laptop", 101, 1200, 10);
@@ -73,6 +76,15 @@ class Inventory {
     listOrders() {
         this.orders.forEach(order => console.log(order.getOrderDetails()));
     }
+    //Task 5 Restocking method
+    restockProduct(productId, quantity) {
+        const product = this.products.find(p => p.id === productId);
+        if (product) {
+            product.restockingStock(quantity); //using Task 5 method
+        } else {
+            console.log("Product is not in inventory.");
+        }  
+    }
 }
 //Test Cases
 const inventory = new Inventory();
@@ -88,3 +100,11 @@ inventory.listOrders();
 // Expected output: "Order ID: 601, Product: Laptop, Quantity: 2, Total Price: $2400"
 console.log(prod1.getDetails());
 // Expected output: "Product: Laptop, ID: 101, Price: $1200, Stock: 3"
+
+//Task 5
+console.log("Task 5");
+
+//Example task 5 test
+inventory.restockProduct(101, 5);
+console.log(prod1.getDetails()); 
+// Expected output: "Product: Laptop, ID: 101, Price: $1200, Stock: 8"
