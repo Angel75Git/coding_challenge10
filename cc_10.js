@@ -45,3 +45,22 @@ console.log(order1.getOrderDetails());
 // Expected output: "Order ID: 501, Product: Laptop, Quantity: 2, Total Price: $2400"
 console.log(prod1.getDetails()); 
 // Expected output: "Product: Laptop, ID: 101, Price: $1200, Stock: 5" (Stock reduced)
+
+//Task 3 
+console.log("Task 3");
+class Inventory {
+    constructor(products) {
+        this.products = []; //using a empty array
+    }
+    addProduct(product) {
+        return this.products.push(product);//Pushing a new product to the array
+    }
+    listProducts() {
+        return this.products.forEach(product => console.log(product.getDetails()));
+    }
+}
+//Test Cases
+const inventory = new Inventory();
+inventory.addProduct(prod1);
+inventory.listProducts();
+// Expected output: "Product: Laptop, ID: 101, Price: $1200, Stock: 5"
